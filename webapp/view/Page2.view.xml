@@ -16,22 +16,22 @@ controllerName="com.sap.build.standard.untitledPrototype.controller.Page2" xmlns
 					<f:formElements>
 						<f:FormElement label="Codice Cliente">
 							<f:fields>
-								<Text text="1"   />
+								<Text text="{CustId}"   />
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Numero Telefono">
 							<f:fields>
-								<Text text="2" />
+								<Text text="{TelNum}" />
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Nome">
 							<f:fields>
-								<Text text="3" />
+								<Text text="{CustName}" />
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="Cognome">
 							<f:fields>
-								<Text text="4"  />
+								<Text text="{CustSur}"  />
 							</f:fields>
 						</f:FormElement>
 					</f:formElements>

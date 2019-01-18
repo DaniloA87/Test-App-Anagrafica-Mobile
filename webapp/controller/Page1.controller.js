@@ -49,7 +49,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
 
 			return new Promise(function(fnResolve) {
-				this.doNavigate("Page2", oBindingContext, fnResolve, "");
+				this.doNavigate("Page2",oBindingContext, fnResolve, "");
 			}.bind(this)).catch(function(err) {
 				if (err !== undefined) {
 					MessageBox.error(err.message);
@@ -86,6 +86,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 			if (sEntityNameSet !== null) {
 				sNavigationPropertyName = sViaRelation || this.getOwnerComponent().getNavigationPropertyForNavigationWithContext(sEntityNameSet, sRouteName);
+				sNavigationPropertyName = ""; // capire come mai serve svuotare , non deve essere null per funzionare
 			}
 			if (sNavigationPropertyName !== null && sNavigationPropertyName !== undefined) {
 				if (sNavigationPropertyName === "") {

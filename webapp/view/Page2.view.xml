@@ -1,0 +1,56 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+controllerName="com.sap.build.standard.untitledPrototype.controller.Page2" xmlns="sap.m">
+    <Page showHeader="true" title="Responsive Page Title" showFooter="true" showNavButton="false">
+        <content>
+        	<VBox class="sapUiSmallMargin">
+		<f:Form id="FormDisplayColumn_oneGroup"
+			editable="false">
+			<f:title>
+				<core:Title text="Dettaglio" />
+			</f:title>
+			<f:layout>
+				<f:ColumnLayout />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Codice Cliente">
+							<f:fields>
+								<Text text="1"   />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Numero Telefono">
+							<f:fields>
+								<Text text="2" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Nome">
+							<f:fields>
+								<Text text="3" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Cognome">
+							<f:fields>
+								<Text text="4"  />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+	</content>
+        <footer>
+            <OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+                <content>
+                    <ToolbarSpacer width=""/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                </content>
+            </OverflowToolbar>
+        </footer>
+        <headerContent/>
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>

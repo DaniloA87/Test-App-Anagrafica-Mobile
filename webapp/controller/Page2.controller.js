@@ -42,6 +42,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			}
 
 		},
+		onDelete: function(){
+		
+		var oEntry = {};
+		
+		var oBindingContext = this.getView().getBindingContext();
+		var oModel = this.getView().getModel();
+		
+		oEntry.CustId = oBindingContext.getProperty("CustId");
+		oEntry.TelNum = oBindingContext.getProperty("TelNum");
+		
+		
+		oModel.remove('/AnagraficaSet',oEntry,null,null,null);
+		
+		
+		
+			
+		},
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("Page2").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));

@@ -16,6 +16,7 @@
                             <Title text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
                             <ToolbarSpacer width=""/>
                             	<SearchField width="100%" liveChange="onLiveChange" />
+                            <OverflowToolbarButton text="New" press="onPressNew" type="Transparent" icon="sap-icon://write-new" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>	
                             <OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Group" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>

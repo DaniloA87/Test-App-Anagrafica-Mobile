@@ -8,6 +8,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	"use strict";
 
 	return BaseController.extend("com.sap.build.standard.untitledPrototype.controller.Page1", {
+		
+		    
 		handleRouteMatched: function(oEvent) {
 			var sAppId = "App5c404e36a812130111d6a15e";
 
@@ -128,7 +130,116 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 		onInit: function() {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.getTarget("Page1").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
+			var that = this;
+						                  var oButton2 = new sap.m.Button('Save', {
 
-		}
+                    text: 'Save',
+
+                   tap: [ that.onSave, that ]
+
+             });
+
+             var oButton3 = new sap.m.Button('Cancel', {
+
+                    text: 'Cancel',
+
+                    tap: [ that.onCancel, that ]
+
+             });
+			var oDialog = new sap.m.Dialog('Dialog1',{
+
+                    title:'Details ofNew Entry',
+
+                    modal: true,
+
+                    contentWidth:'2em',
+
+                    buttons: [ oButton2, oButton3 ],
+
+             content:[
+
+                      new sap.m.Label({text:'Nome'}),
+
+                      new sap.m.Input({
+
+                    maxLength: 20,
+
+                    id: 'FName'
+
+                      }),
+
+                      new sap.m.Label({text:'Cognome'}),
+
+                      new sap.m.Input({
+
+                   maxLength: 20,
+
+                     id: 'LName'
+
+                       }),
+
+                      new sap.m.Label({text:'Numero di telefono'}),
+
+                      new sap.m.Input({
+
+                   maxLength: 12,
+
+                   id: 'Num' 
+
+                    })
+                    
+
+                      ]
+
+             });
+
+		},
+		
+		onPressNew: function(oEvent) {
+			var that = this;
+
+
+             sap.ui.getCore().byId('Dialog1').open();
+		},
+	onSave: function(oEvent) {
+		     var that = this;
+		     var fName = sap.ui.getCore().byId('FName').getValue();
+
+             var lName = sap.ui.getCore().byId('LName').getValue();
+
+             var nTel = sap.ui.getCore().byId('Num').getValue();
+             
+             var oEntry = {};
+             oEntry.CustName = fName;
+             oEntry.CustSur = lName;
+             oEntry.TelNum = nTel;
+             oEntry.CustId = this.strRandom();
+             
+             var oModel = this.getView().getModel();
+             oModel.create('/AnagraficaSet',oEntry,null,that.onCreateOk,that.onCreateKo);
+		
+	},
+  strRandom: function(oEvent) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 13; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+   },
+   onCreateOk: function(oEvent) {
+   	var msg = 'Inserito';
+   	sap.m.MessageBox.show(msg);
+   },
+   onCreateKo: function(oEvent) {
+   var msg = 'Errore';
+   	sap.m.MessageBox.show(msg);	
+   	
+   },
+	onCancel: function(oEvent) {  
+		
+		sap.ui.getCore().byId('Dialog1').close();
+	}
 	});
 }, /* bExport= */ true);

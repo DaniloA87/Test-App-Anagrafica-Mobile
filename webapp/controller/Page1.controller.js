@@ -59,6 +59,24 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			});
 
 		},
+		onSort: function(oEvent) {
+		
+		
+		var oList = this.getView().byId("idTab");
+		var oBinding = oList.getBinding("items");
+		var order;
+		var sSortParams = oBinding.sSortParams;
+		if (sSortParams) {
+	    if  (sSortParams.endsWith("desc")){
+	    order = false;
+	    }else{ 
+	    order = true;
+	    }
+		}
+		var oSort = new sap.ui.model.Sorter("TelNum", order,false);
+		oBinding.sort(oSort);
+			
+		},
 		onLiveChange: function(oEvent) {
 
 			// build filter array
@@ -146,6 +164,21 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                     tap: [ that.onCancel, that ]
 
              });
+             var oButton = new sap.m.Button('Save2', {
+
+                    text: 'Applica',
+
+                   tap: [ that.onFiltApply, that ]
+
+             });
+
+             var oButton1 = new sap.m.Button('Cancel2', {
+
+                    text: 'Cancel',
+
+                    tap: [ that.onCancel2, that ]
+
+             });
 			var oDialog = new sap.m.Dialog('Dialog1',{
 
                     title:'Details ofNew Entry',
@@ -192,14 +225,47 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                       ]
 
              });
+             	var oDialog2 = new sap.m.Dialog('Dialog2',{
+
+                    title:'Filtri',
+
+                    modal: true,
+
+                    contentWidth:'2em',
+
+                    buttons: [ oButton, oButton1 ],
+
+             content:[
+
+                      new sap.m.Label({text:'Filtra per:'}),
+
+                      new sap.m.Input({
+
+                    maxLength: 20,
+
+                    id: 'idFilter'
+
+                      }),
+
+                      
+                    
+
+                      ]
+
+             });
 
 		},
 		
 		onPressNew: function(oEvent) {
 			var that = this;
 
-
              sap.ui.getCore().byId('Dialog1').open();
+		},
+		onFilter: function(oEvent) {
+			var that = this;
+
+
+             sap.ui.getCore().byId('Dialog2').open();
 		},
 	onSave: function(oEvent) {
 		     var that = this;
@@ -219,6 +285,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
              oModel.create('/AnagraficaSet',oEntry,null,that.onCreateOk,that.onCreateKo);
 		
 	},
+		onFiltApply: function(oEvent) {
+		     var that = this;
+		     var sFilt = sap.ui.getCore().byId('idFilter').getValue();
+             var oList = this.getView().byId('idTab') ;
+             var oBinding = oList.getBinding('items');
+             var aFilter = [];
+             if (sFilt) {
+				aFilter.push(new Filter("CustName", FilterOperator.Contains, sFilt));
+			}
+			oBinding.filter(aFilter);
+			
+		
+	},
+
   strRandom: function(oEvent) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -240,6 +320,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	onCancel: function(oEvent) {  
 		
 		sap.ui.getCore().byId('Dialog1').close();
+	},
+		onCancel2: function(oEvent) {  
+		
+		sap.ui.getCore().byId('Dialog2').close();
 	}
 	});
 }, /* bExport= */ true);

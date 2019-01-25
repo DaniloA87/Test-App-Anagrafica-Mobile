@@ -1,7 +1,8 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.untitledPrototype.controller.Page1" xmlns="sap.m">
     <Page showHeader="true" title="Anagrafiche" showFooter="true" showNavButton="false">
         <content>
-            <Table width="auto" id="idTab" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" 
+            <Table width="auto" id="idTab" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
+                
                 items="{/AnagraficaSet}" growingScrollToLoad="true" class="sapUiResponsiveMargin" itemPress="_onTableItemPress">
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
@@ -17,23 +18,29 @@
                             <ToolbarSpacer width=""/>
                             	<SearchField width="100%" liveChange="onLiveChange" />
                             <OverflowToolbarButton text="New" press="onPressNew" type="Transparent" icon="sap-icon://write-new" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>	
-                            <OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                            <OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                            <OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" press="onSort" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                            <OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" press="onFilter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Group" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Settings" type="Transparent" icon="sap-icon://action-settings" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <Column width="auto" hAlign="Left"  vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
+                        	
+                        		
                             <Text text="Codice cliente" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            
+                            
+                            
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Numero di telefono" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            <Text text="Numero di telefono" width="auto" maxLines="1"  wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                            
                         </header>
                         <footer/>
                     </Column>
@@ -50,8 +57,8 @@
                         <footer/>
                     </Column>
                 </columns>
-                <items>
-                    <ColumnListItem type="Active" >
+                <items id="idList">
+                    <ColumnListItem type="Active"  >
                         <cells>
                         	<Text text="{CustId}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                             <Text text="{TelNum}"  visible="true"/>

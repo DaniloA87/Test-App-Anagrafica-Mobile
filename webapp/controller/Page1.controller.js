@@ -282,7 +282,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
              oEntry.CustId = this.strRandom();
              
              var oModel = this.getView().getModel();
-             oModel.create('/AnagraficaSet',oEntry,null,that.onCreateOk,that.onCreateKo);
+             oModel.create('/AnagraficaSet',oEntry,{success:this.onCreateOk()});
 		
 	},
 		onFiltApply: function(oEvent) {
@@ -310,9 +310,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
    },
    onCreateOk: function(oEvent) {
    	var msg = 'Inserito';
+   	var oDialog = sap.ui.getCore().byId('Dialog1');
+   	oDialog.close();
    	sap.m.MessageBox.show(msg);
+   	
    },
-   onCreateKo: function(oEvent) {
+   onCreateKo: function(oError) {
    var msg = 'Errore';
    	sap.m.MessageBox.show(msg);	
    	

@@ -73,7 +73,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 	    order = true;
 	    }
 		}
-		var oSort = new sap.ui.model.Sorter("TelNum", order,false);
+		var oSort = new sap.ui.model.Sorter("CustId", order);
 		oBinding.sort(oSort);
 			
 		},

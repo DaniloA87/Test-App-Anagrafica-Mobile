@@ -21,7 +21,7 @@
                             <OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" press="onSort" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" press="onFilter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <OverflowToolbarButton text="Group" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                            <OverflowToolbarButton text="Settings" type="Transparent" icon="sap-icon://action-settings" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                            <OverflowToolbarButton text="Refresh" press='onRefresh' type="Transparent" icon="sap-icon://refresh" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>

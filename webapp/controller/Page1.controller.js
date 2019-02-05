@@ -298,6 +298,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			
 		
 	},
+	   onRefresh: function(oEvent) {
+	   	var aFilter = [];
+	   	var oList = this.getView().byId('idTab') ;
+        var oBinding = oList.getBinding('items');
+        oBinding.filter(aFilter);
+        
+	   }, 
 
   strRandom: function(oEvent) {
   var text = "";
